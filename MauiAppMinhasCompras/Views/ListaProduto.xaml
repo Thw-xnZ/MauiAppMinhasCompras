@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppMinhasCompras.Views.ListaProduto"
+             Title="Minhas Compras">
+
+    <!-- Aqui foi adicionado dois botões no topo do aplicativo, um para realizamos a soma, e outro para adicionarmos a lista -->
+    <!-- produtos, no momento apenas o adicionar estará em uso -->
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Somar" />
+        <ToolbarItem Text="Adicionar" Clicked="ToolbarItem_Clicked" />
+
+    </ContentPage.ToolbarItems>
+    
+    <VerticalStackLayout>
+        <SearchBar x:Name="txt_search" Placeholder="Busca de Produtos" />
+    </VerticalStackLayout>
+</ContentPage>
