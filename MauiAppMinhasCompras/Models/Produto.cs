@@ -9,5 +9,7 @@ namespace MauiAppMinhasCompras.Models
         public string Descricao { get; set; }
         public double Quantidade { get; set; }
         public double Preco { get; set; }
+        public double Total { get => Quantidade * Preco; }
     }
 }
+// Adicionado a propriedade Total, que é calculada multiplicando a Qtd pelo Preço, facilitando a exibição do valor
