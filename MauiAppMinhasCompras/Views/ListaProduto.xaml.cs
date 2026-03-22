@@ -20,8 +20,11 @@ public partial class ListaProduto : ContentPage
     // mantendo a pagina sempre atualizada quando ela é recarregada
     protected async override void OnAppearing()
     {
-        try { 
-		List<Produto> tmp = await App.Db.GetAll();
+        try 
+        { 
+        lista.Clear();
+
+            List<Produto> tmp = await App.Db.GetAll();
 
 		tmp.ForEach(i => lista.Add(i));
     }
@@ -81,7 +84,24 @@ public partial class ListaProduto : ContentPage
     }
 
     // Projeto de exclusão de um produto, onde o usuário pode clicar no item da lista e escolher a opção de excluir o produto selecionado.
-    private async Task MenuItem_Clicked(object sender, EventArgs e)
+    
+
+    private void lst_produtos_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+    {
+        try
+        {
+            Produto p = e.SelectedItem as Produto; 
+
+            Navigation.PushAsync(new Views.EditarProduto { BindingContext = p });
+
+        }
+        catch (Exception ex)
+        {
+            DisplayAlert("Ops", $"Ocorreu um erro: {ex.Message}", "OK");
+        }
+    }
+
+    private async void MenuItem_Clicked_1(object sender, EventArgs e)
     {
         try
         {
@@ -99,22 +119,7 @@ public partial class ListaProduto : ContentPage
         }
         catch (Exception ex)
         {
-            DisplayAlert("Ops", $"Ocorreu um erro: {ex.Message}", "OK");
-        }
-    }
-
-    private void lst_produtos_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-    {
-        try
-        {
-            Produto p = e.SelectedItem as Produto; 
-
-            Navigation.PushAsync(new Views.EditarProduto { BindingContext = p });
-
-        }
-        catch (Exception ex)
-        {
-            DisplayAlert("Ops", $"Ocorreu um erro: {ex.Message}", "OK");
+            await DisplayAlert("Ops", $"Ocorreu um erro: {ex.Message}", "OK");
         }
     }
 }
