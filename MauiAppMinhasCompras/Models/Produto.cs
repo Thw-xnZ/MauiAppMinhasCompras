@@ -2,6 +2,8 @@
 
 namespace MauiAppMinhasCompras.Models
 {   
+    // Aqui em produtos, foi adicionado a validação de campos, para evitar que o usuário deixe campos em branco, usando o metodo If
+    // e lançando uma throw de Exception para o usuário preencher os campos
     public class Produto
     {
         string _descricao;

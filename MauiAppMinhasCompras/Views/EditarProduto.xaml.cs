@@ -9,6 +9,8 @@ public partial class EditarProduto : ContentPage
 		InitializeComponent();
 	}
 
+    // usamos o BindingContext para pegar o produto que foi clicado na lista, e atualizar os campos, com o metodo try catch para evitar um
+    // crash do app, usando a mesma logica do cadastro, porem usando o metodo Update para atualizar o produto
     private async void ToolbarItem_Clicked(object sender, EventArgs e)
     {
         try

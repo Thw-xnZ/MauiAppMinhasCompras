@@ -20,7 +20,9 @@ public partial class ListaProduto : ContentPage
     // mantendo a pagina sempre atualizada quando ela é recarregada
     protected async override void OnAppearing()
     {
-        try 
+        // foi adicionado o lista.Clear para resolver o Bug de duplicação de itens na lista, onde cada vez que a página é recarregada,
+        // os itens são adicionados novamente à lista sem limpar os itens anteriores, resultando em uma duplicação dos itens exibidos na ListView.
+        try
         { 
         lista.Clear();
 
@@ -83,8 +85,9 @@ public partial class ListaProduto : ContentPage
         }
     }
 
-    // Projeto de exclusão de um produto, onde o usuário pode clicar no item da lista e escolher a opção de excluir o produto selecionado.
-    
+    // Usando o comando pushAsync para navegar para a página de edição de produto, passando o produto selecionado como
+    // contexto de ligação (BindingContext) para a nova página, permitindo que os detalhes do produto sejam exibidos e
+    // editados na página de edição.
 
     private void lst_produtos_ItemSelected(object sender, SelectedItemChangedEventArgs e)
     {
@@ -101,6 +104,7 @@ public partial class ListaProduto : ContentPage
         }
     }
 
+    // Botão de exclusão de um produto, onde o usuário pode clicar no item da lista e escolher a opção de excluir o produto selecionado.
     private async void MenuItem_Clicked_1(object sender, EventArgs e)
     {
         try
