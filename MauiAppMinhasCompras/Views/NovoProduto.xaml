@@ -19,5 +19,8 @@
 
         <Label Text="Preço Und:" />
         <Entry x:Name="txtPreco" Keyboard="Numeric" />
+
+        <Label Text="Categoria:" />
+        <Entry x:Name="txtCategoria" />
     </VerticalStackLayout>
 </ContentPage>

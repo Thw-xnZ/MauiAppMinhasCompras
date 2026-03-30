@@ -9,6 +9,7 @@ namespace MauiAppMinhasCompras.Models
         string _descricao;
         double _quantidade;
         double _preco;
+        string _categoria;
 
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
@@ -49,6 +50,19 @@ namespace MauiAppMinhasCompras.Models
             }
         }
         public double Total { get => Quantidade * Preco; }
+
+        public string Categoria
+        {
+            get => _categoria;
+            set
+            {
+                if (value == null)
+                {
+                    throw new Exception("Por favor, preencha qual a Categoria");
+                }
+                _categoria = value;
+            }
+        }
     }
 }
 // Adicionado a propriedade Total, que é calculada multiplicando a Qtd pelo Preço, facilitando a exibição do valor
